@@ -40,7 +40,7 @@ const plans = [
     description:
       "Buy once, use forever. Get all the features and updates for a lifetime.",
     button: {
-      label: "Buy",
+      label: "Buy now",
       href: "#",
     },
     features: ["iCloud Sync", "Unlimited Collections", "Theme Customization"],

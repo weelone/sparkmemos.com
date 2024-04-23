@@ -4,16 +4,27 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 
-export function NavLinks() {
+export function NavLinks({ type }: { type: "header" | "footer" }) {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   let timeoutRef = useRef<number | null>(null);
 
-  return [
-    ["Features", "/#features"],
-    ["Reviews", "/#reviews"],
-    ["Pricing", "/#pricing"],
-    ["FAQs", "/#faqs"],
-  ].map(([label, href], index) => (
+  return (
+    type === "header"
+      ? [
+          ["Features", "/#features"],
+          ["Reviews", "/#reviews"],
+          ["Pricing", "/#pricing"],
+          ["FAQs", "/#faqs"],
+          ["Terms", "/terms"],
+          ["Privacy", "/privacy"],
+        ]
+      : [
+          ["Reviews", "/#reviews"],
+          ["FAQs", "/#faqs"],
+          ["Terms", "/terms"],
+          ["Privacy", "/privacy"],
+        ]
+  ).map(([label, href], index) => (
     <Link
       key={label}
       href={href}

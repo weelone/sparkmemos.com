@@ -60,7 +60,7 @@ export function Header() {
               <Logo className="h-10 w-auto" />
             </Link>
             <div className="hidden lg:flex lg:gap-10">
-              <NavLinks />
+              <NavLinks type="header" />
             </div>
           </div>
           <div className="flex items-center gap-6">
@@ -113,6 +113,12 @@ export function Header() {
                               Pricing
                             </MobileNavLink>
                             <MobileNavLink href="/#faqs">FAQs</MobileNavLink>
+                            <MobileNavLink href="/terms">
+                              User Terms
+                            </MobileNavLink>
+                            <MobileNavLink href="/privacy">
+                              Privacy Policy
+                            </MobileNavLink>
                           </div>
                           <div className="mt-8 flex flex-col gap-4">
                             <Button href="/login" variant="outline">

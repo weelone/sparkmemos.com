@@ -36,7 +36,7 @@ export function Footer() {
               </div>
             </div>
             <nav className="mt-11 flex gap-8">
-              <NavLinks />
+              <NavLinks type="footer" />
             </nav>
           </div>
           <div className="group relative -mx-4 flex items-center self-stretch p-4 transition-colors hover:bg-stone-100 sm:self-auto sm:rounded-2xl lg:mx-0 lg:self-auto lg:p-6">
