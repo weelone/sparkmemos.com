@@ -1,47 +1,46 @@
-import { useId } from 'react'
+import { useId } from "react";
 
-import { Container } from '@/components/Container'
+import { Container } from "@/components/Container";
 
 const features = [
   {
-    name: 'Invest any amount',
+    name: "Multi-type Memos",
     description:
-      'Whether it’s $1 or $1,000,000, we can put your money to work for you.',
-    icon: DeviceArrowIcon,
-  },
-  {
-    name: 'Build a balanced portfolio',
-    description:
-      'Invest in different industries to find the most opportunities to win huge.',
-    icon: DeviceCardsIcon,
-  },
-  {
-    name: 'Trade in real-time',
-    description:
-      'Get insider tips on big stock moves and act on them within seconds.',
-    icon: DeviceClockIcon,
-  },
-  {
-    name: 'Profit from your network',
-    description:
-      'Invite new insiders to get tips faster and beat even other Pocket users.',
+      "Create memos with text, images, or links to keep all your thoughts in one place.",
     icon: DeviceListIcon,
   },
   {
-    name: 'Encrypted and anonymized',
+    name: "Custom Collections",
     description:
-      'Cutting-edge security technology that even the NSA doesn’t know about keeps you hidden.',
-    icon: DeviceLockIcon,
+      "Organize your memos in collections to keep your thoughts in order.",
+    icon: DeviceCardsIcon,
   },
   {
-    name: 'Portfolio tracking',
+    name: "Share Extension",
     description:
-      'Watch your investments grow exponentially, leaving other investors in the dust.',
+      "With the share extension, you can save any link, text, or image from any app.",
+    icon: DeviceArrowIcon,
+  },
+  {
+    name: "Custom Theme",
+    description:
+      "You can customize the app to match your style with custom themes.",
     icon: DeviceChartIcon,
   },
-]
+  {
+    name: "Quickly Review",
+    description: "Quickly review, keep your memos refresh.",
+    icon: DeviceClockIcon,
+  },
+  {
+    name: "Privacy First",
+    description:
+      "Your data is yours. We don’t store your data on our servers. It’s all on your device.",
+    icon: DeviceLockIcon,
+  },
+];
 
-function DeviceArrowIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function DeviceArrowIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
       <path
@@ -58,11 +57,11 @@ function DeviceArrowIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
       />
       <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
     </svg>
-  )
+  );
 }
 
-function DeviceCardsIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  let id = useId()
+function DeviceCardsIcon(props: React.ComponentPropsWithoutRef<"svg">) {
+  let id = useId();
 
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
@@ -94,10 +93,10 @@ function DeviceCardsIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
         </linearGradient>
       </defs>
     </svg>
-  )
+  );
 }
 
-function DeviceClockIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function DeviceClockIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
       <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
@@ -114,10 +113,10 @@ function DeviceClockIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
         fill="#171717"
       />
     </svg>
-  )
+  );
 }
 
-function DeviceListIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function DeviceListIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" {...props}>
       <path
@@ -137,10 +136,10 @@ function DeviceListIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
       />
       <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
     </svg>
-  )
+  );
 }
 
-function DeviceLockIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function DeviceLockIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
       <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
@@ -157,10 +156,10 @@ function DeviceLockIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
         fill="#171717"
       />
     </svg>
-  )
+  );
 }
 
-function DeviceChartIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function DeviceChartIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" {...props}>
       <path
@@ -183,7 +182,7 @@ function DeviceChartIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
       />
       <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
     </svg>
-  )
+  );
 }
 
 export function SecondaryFeatures() {
@@ -195,12 +194,12 @@ export function SecondaryFeatures() {
     >
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-3xl font-medium tracking-tight text-gray-900">
-            Now is the time to build your portfolio.
+          <h2 className="text-3xl font-medium tracking-tight text-stone-900">
+            Now is the time to get started.
           </h2>
-          <p className="mt-2 text-lg text-gray-600">
-            With typical market returns, you have to start young to secure your
-            future. With Pocket, it’s never too late to build your nest egg.
+          <p className="mt-2 text-lg text-stone-600">
+            With Spark Memos, you can quickly capture your inspiration and keep
+            everything in one place.
           </p>
         </div>
         <ul
@@ -210,17 +209,17 @@ export function SecondaryFeatures() {
           {features.map((feature) => (
             <li
               key={feature.name}
-              className="rounded-2xl border border-gray-200 p-8"
+              className="rounded-2xl border border-stone-200 p-8"
             >
               <feature.icon className="h-8 w-8" />
-              <h3 className="mt-6 font-semibold text-gray-900">
+              <h3 className="mt-6 font-semibold text-stone-900">
                 {feature.name}
               </h3>
-              <p className="mt-2 text-gray-700">{feature.description}</p>
+              <p className="mt-2 text-stone-700">{feature.description}</p>
             </li>
           ))}
         </ul>
       </Container>
     </section>
-  )
+  );
 }

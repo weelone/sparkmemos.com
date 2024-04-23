@@ -1,39 +1,39 @@
-'use client'
+"use client";
 
-import { useRef, useState } from 'react'
-import Link from 'next/link'
-import { AnimatePresence, motion } from 'framer-motion'
+import { useRef, useState } from "react";
+import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
 
 export function NavLinks() {
-  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-  let timeoutRef = useRef<number | null>(null)
+  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  let timeoutRef = useRef<number | null>(null);
 
   return [
-    ['Features', '/#features'],
-    ['Reviews', '/#reviews'],
-    ['Pricing', '/#pricing'],
-    ['FAQs', '/#faqs'],
+    ["Features", "/#features"],
+    ["Reviews", "/#reviews"],
+    ["Pricing", "/#pricing"],
+    ["FAQs", "/#faqs"],
   ].map(([label, href], index) => (
     <Link
       key={label}
       href={href}
-      className="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-0"
+      className="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-stone-700 transition-colors delay-150 hover:text-stone-900 hover:delay-0"
       onMouseEnter={() => {
         if (timeoutRef.current) {
-          window.clearTimeout(timeoutRef.current)
+          window.clearTimeout(timeoutRef.current);
         }
-        setHoveredIndex(index)
+        setHoveredIndex(index);
       }}
       onMouseLeave={() => {
         timeoutRef.current = window.setTimeout(() => {
-          setHoveredIndex(null)
-        }, 200)
+          setHoveredIndex(null);
+        }, 200);
       }}
     >
       <AnimatePresence>
         {hoveredIndex === index && (
           <motion.span
-            className="absolute inset-0 rounded-lg bg-gray-100"
+            className="absolute inset-0 rounded-lg bg-stone-100"
             layoutId="hoverBackground"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 0.15 } }}
@@ -46,5 +46,5 @@ export function NavLinks() {
       </AnimatePresence>
       <span className="relative z-10">{label}</span>
     </Link>
-  ))
+  ));
 }

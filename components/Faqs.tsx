@@ -43,21 +43,21 @@ export function Faqs() {
     <section
       id="faqs"
       aria-labelledby="faqs-title"
-      className="border-t border-gray-200 py-20 sm:py-32"
+      className="border-t border-stone-200 py-20 sm:py-32"
     >
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2
             id="faqs-title"
-            className="text-3xl font-medium tracking-tight text-gray-900"
+            className="text-3xl font-medium tracking-tight text-stone-900"
           >
             Frequently asked questions
           </h2>
-          <p className="mt-2 text-lg text-gray-600">
+          <p className="mt-2 text-lg text-stone-600">
             If you have anything else you want to ask,{" "}
             <a
               href="mailto:spark@weelone.com"
-              className="text-gray-900 underline"
+              className="text-stone-900 underline"
             >
               reach out to us
             </a>
@@ -73,10 +73,10 @@ export function Faqs() {
               <ul role="list" className="space-y-10">
                 {column.map((faq, faqIndex) => (
                   <li key={faqIndex}>
-                    <h3 className="text-lg font-semibold leading-6 text-gray-900">
+                    <h3 className="text-lg font-semibold leading-6 text-stone-900">
                       {faq.question}
                     </h3>
-                    <p className="mt-4 text-sm text-gray-700">{faq.answer}</p>
+                    <p className="mt-4 text-sm text-stone-700">{faq.answer}</p>
                   </li>
                 ))}
               </ul>
