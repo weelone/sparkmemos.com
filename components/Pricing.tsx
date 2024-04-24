@@ -30,7 +30,12 @@ const plans = [
       label: "Subscribe",
       href: "#",
     },
-    features: ["iCloud Sync", "Unlimited Collections", "Theme Customization"],
+    features: [
+      "All trial features",
+      "iCloud Sync",
+      "Unlimited Collections",
+      "Theme Customization",
+    ],
     logomarkClassName: "fill-stone-500",
   },
   {
@@ -43,7 +48,7 @@ const plans = [
       label: "Buy now",
       href: "#",
     },
-    features: ["iCloud Sync", "Unlimited Collections", "Theme Customization"],
+    features: ["iCloud sync", "Unlimited collections", "Theme customization"],
     logomarkClassName: "fill-orange-500",
   },
 ];

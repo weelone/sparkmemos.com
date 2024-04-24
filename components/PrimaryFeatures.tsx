@@ -427,7 +427,7 @@ export function PrimaryFeatures() {
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
           <h2 className="text-3xl font-medium tracking-tight text-white">
-            Quickly capture your inspiration. Try it for yourself.
+            Quickly capture your inspiration. Try it right now.
           </h2>
           <p className="mt-2 text-lg text-stone-400">
             The perfect tool for capturing your inspiration on the go! You can

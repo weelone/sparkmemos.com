@@ -121,9 +121,6 @@ export function Header() {
                             </MobileNavLink>
                           </div>
                           <div className="mt-8 flex flex-col gap-4">
-                            <Button href="/login" variant="outline">
-                              Log in
-                            </Button>
                             <Button href="#">Download the app</Button>
                           </div>
                         </Popover.Panel>
