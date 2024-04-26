@@ -6,7 +6,8 @@ import { Container } from "@/components/Container";
 import { TextField } from "@/components/Fields";
 import { Logomark } from "@/components/Logo";
 import { NavLinks } from "@/components/NavLinks";
-import qrCode from "@/images/qr-code.svg";
+import { METADATA } from "@/lib/metadata";
+import { QRCodeSVG } from "qrcode.react";
 
 function QrCodeBorder(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -42,11 +43,16 @@ export function Footer() {
           <div className="group relative -mx-4 flex items-center self-stretch p-4 transition-colors hover:bg-stone-100 sm:self-auto sm:rounded-2xl lg:mx-0 lg:self-auto lg:p-6">
             <div className="relative flex h-24 w-24 flex-none items-center justify-center">
               <QrCodeBorder className="absolute inset-0 h-full w-full stroke-stone-300 transition-colors group-hover:stroke-orange-500" />
-              <Image src={qrCode} alt="" unoptimized />
+              <QRCodeSVG
+                className="w-20 h-20"
+                value={METADATA.appStoreLink}
+                bgColor="transparent"
+                fgColor="currentColor"
+              />
             </div>
             <div className="ml-8 lg:w-64">
               <p className="text-base font-semibold text-stone-900">
-                <Link href="#">
+                <Link href={METADATA.appStoreLink} target="_blank">
                   <span className="absolute inset-0 sm:rounded-2xl" />
                   Download the app
                 </Link>

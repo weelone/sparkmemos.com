@@ -8,6 +8,7 @@ import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { Logo } from "@/components/Logo";
 import { NavLinks } from "@/components/NavLinks";
+import { METADATA } from "@/lib/metadata";
 
 function MenuIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -121,7 +122,12 @@ export function Header() {
                             </MobileNavLink>
                           </div>
                           <div className="mt-8 flex flex-col gap-4">
-                            <Button href="#">Download the app</Button>
+                            <Button
+                              href={METADATA.appStoreLink}
+                              target="_blank"
+                            >
+                              Download the app
+                            </Button>
                           </div>
                         </Popover.Panel>
                       </>
@@ -130,7 +136,11 @@ export function Header() {
                 </>
               )}
             </Popover>
-            <Button href="#" className="hidden lg:block">
+            <Button
+              href={METADATA.appStoreLink}
+              target="_blank"
+              className="hidden lg:block"
+            >
               Download
             </Button>
           </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import clsx from "clsx";
+import { METADATA } from "@/lib/metadata";
 
 export function AppStoreLink({
   color = "black",
@@ -8,7 +9,8 @@ export function AppStoreLink({
 }) {
   return (
     <Link
-      href="#"
+      href={METADATA.appStoreLink}
+      target="_blank"
       aria-label="Download on the App Store"
       className={clsx(
         "rounded-lg transition-colors",

@@ -7,6 +7,7 @@ import clsx from "clsx";
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { Logomark } from "@/components/Logo";
+import { METADATA } from "@/lib/metadata";
 
 const plans = [
   {
@@ -16,7 +17,7 @@ const plans = [
     description: "You want experience the app right now. Get started for free.",
     button: {
       label: "Get started for free",
-      href: "#",
+      href: METADATA.appStoreLink,
     },
     features: ["3 Collections limited", "Unlimited memos"],
     logomarkClassName: "fill-stone-300",
@@ -28,7 +29,7 @@ const plans = [
     description: "Subscribe the app to receive continuous updates and support.",
     button: {
       label: "Subscribe",
-      href: "#",
+      href: METADATA.appStoreLink,
     },
     features: [
       "All trial features",
@@ -46,7 +47,7 @@ const plans = [
       "Buy once, use forever. Get all the features and updates for a lifetime.",
     button: {
       label: "Buy now",
-      href: "#",
+      href: METADATA.appStoreLink,
     },
     features: ["iCloud sync", "Unlimited collections", "Theme customization"],
     logomarkClassName: "fill-orange-500",
