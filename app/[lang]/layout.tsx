@@ -5,6 +5,8 @@ import "../globals.css";
 import { METADATA } from "@/lib/metadata";
 import { getDictionary } from "@/dictionaries";
 
+export const runtime = "edge";
+
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
