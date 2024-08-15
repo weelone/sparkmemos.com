@@ -4,6 +4,7 @@ import clsx from "clsx";
 import "../globals.css";
 import { METADATA } from "@/lib/metadata";
 import { dictionaryKeys, getDictionary } from "@/dictionaries";
+import { Metadata } from "next";
 
 export const runtime = "edge";
 
@@ -17,7 +18,7 @@ export async function generateMetadata({
   params,
 }: {
   params: { lang: string };
-}) {
+}): Promise<Metadata> {
   const dict = await getDictionary(params.lang);
   const langEntries = await Promise.all(
     dictionaryKeys.map(async (lang) => {
@@ -28,6 +29,7 @@ export async function generateMetadata({
   );
 
   return {
+    metadataBase: new URL(dict.baseUrl),
     title: {
       template: dict.titleTemplate,
       default: dict.defaultTitle,
