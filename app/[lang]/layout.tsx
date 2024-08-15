@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 import "../globals.css";
 import { METADATA } from "@/lib/metadata";
-import { getDictionary } from "@/dictionaries";
+import { dictionaryKeys, getDictionary } from "@/dictionaries";
 
 export const runtime = "edge";
 
@@ -19,6 +19,13 @@ export async function generateMetadata({
   params: { lang: string };
 }) {
   const dict = await getDictionary(params.lang);
+  const langEntries = await Promise.all(
+    dictionaryKeys.map(async (lang) => {
+      const dictionary = await getDictionary(lang);
+
+      return [lang, dictionary.urls.home];
+    })
+  );
 
   return {
     title: {
@@ -29,6 +36,22 @@ export async function generateMetadata({
     keywords: dict.defaultKeywords,
     itunes: {
       appId: METADATA.appId,
+    },
+    openGraph: {
+      title: dict.websiteName,
+      description: dict.defaultDescription,
+      siteName: dict.websiteName,
+      images: "/social-banner.png",
+    },
+    twitter: {
+      title: dict.websiteName,
+      description: dict.defaultDescription,
+      site: "@WeeloneHQ",
+      card: "summary_large_image",
+      images: "/social-banner.png",
+    },
+    alternates: {
+      languages: Object.fromEntries(langEntries),
     },
   };
 }
