@@ -11,6 +11,11 @@ const dictionary = {
     "Lo strumento perfetto per catturare la tua ispirazione in movimento! Puoi annotare rapidamente i tuoi pensieri, idee e creatività ovunque tu sia. Oppure usalo per la lettura successiva, la scrittura di un diario o anche per organizzare la tua giornata. L'interfaccia intuitiva rende facile tenere traccia delle tue intuizioni e rimanere organizzato.",
   defaultKeywords: [
     "Spark Memos",
+    "iOS",
+    "App",
+    "iOS App",
+    "Nota breve",
+    "Ispirazione",
     "Presa di appunti",
     "Diario",
     "Lettura successiva",

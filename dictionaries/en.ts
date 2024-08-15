@@ -11,6 +11,11 @@ const dictionary = {
     "The perfect tool for capturing your inspiration on the go! You can quickly jot down your thoughts, ideas, and creativity wherever you are. Or use it for later reading, journaling, or even organizing your day. The intuitive interface makes it easy to keep track of your insights and stay organized.",
   defaultKeywords: [
     "Spark Memos",
+    "iOS",
+    "App",
+    "iOS App",
+    "Short Note",
+    "Inspiration",
     "Note-taking",
     "Diary",
     "Read Later",

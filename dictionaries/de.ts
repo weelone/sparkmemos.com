@@ -11,6 +11,11 @@ const dictionary = {
     "Das perfekte Werkzeug, um Ihre Inspiration unterwegs festzuhalten! Sie können Ihre Gedanken, Ideen und Kreativität überall schnell notieren. Oder nutzen Sie es zum späteren Lesen, Tagebuchschreiben oder sogar zur Organisation Ihres Tages. Die intuitive Benutzeroberfläche macht es einfach, Ihre Erkenntnisse im Auge zu behalten und organisiert zu bleiben.",
   defaultKeywords: [
     "Spark Memos",
+    "iOS",
+    "App",
+    "iOS App",
+    "Kurze Notiz",
+    "Inspiration",
     "Notizen",
     "Tagebuch",
     "Später lesen",
