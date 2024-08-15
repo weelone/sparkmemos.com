@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { useInView } from "framer-motion";
 
 import { Container } from "@/components/Container";
+import { Dictionary } from "@/dictionaries";
 
 interface Review {
   title: string;
@@ -277,7 +278,7 @@ function ReviewGrid() {
   );
 }
 
-export function Reviews() {
+export function Reviews({ dict }: { dict: Dictionary }) {
   return (
     <section
       id="reviews"
@@ -289,10 +290,10 @@ export function Reviews() {
           id="reviews-title"
           className="text-3xl font-medium tracking-tight text-stone-900 sm:text-center"
         >
-          Everyone is changing their life with Spark Memos.
+          {dict.homeSections.reviews.title}
         </h2>
         <p className="mt-2 text-lg text-stone-600 sm:text-center">
-          See what our users have to say.
+          {dict.homeSections.reviews.description}
         </p>
         <ReviewGrid />
       </Container>

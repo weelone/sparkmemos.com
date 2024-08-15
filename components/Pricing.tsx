@@ -7,52 +7,7 @@ import clsx from "clsx";
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { Logomark } from "@/components/Logo";
-import { METADATA } from "@/lib/metadata";
-
-const plans = [
-  {
-    name: "Trial",
-    featured: false,
-    price: { Monthly: "$0", Annually: "$0" },
-    description: "You want experience the app right now. Get started for free.",
-    button: {
-      label: "Get started for free",
-      href: METADATA.appStoreLink,
-    },
-    features: ["3 Collections limited", "Unlimited memos"],
-    logomarkClassName: "fill-stone-300",
-  },
-  {
-    name: "Full subscription",
-    featured: true,
-    price: { Monthly: "$1.9", Annually: "$9.9" },
-    description: "Subscribe the app to receive continuous updates and support.",
-    button: {
-      label: "Subscribe",
-      href: METADATA.appStoreLink,
-    },
-    features: [
-      "All trial features",
-      "iCloud Sync",
-      "Unlimited Collections",
-      "Theme Customization",
-    ],
-    logomarkClassName: "fill-stone-500",
-  },
-  {
-    name: "Lifetime",
-    featured: false,
-    price: { Monthly: "$49", Annually: "$49" },
-    description:
-      "Buy once, use forever. Get all the features and updates for a lifetime.",
-    button: {
-      label: "Buy now",
-      href: METADATA.appStoreLink,
-    },
-    features: ["iCloud sync", "Unlimited collections", "Theme customization"],
-    logomarkClassName: "fill-orange-500",
-  },
-];
+import { Dictionary } from "@/dictionaries";
 
 function CheckIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -192,7 +147,7 @@ function Plan({
   );
 }
 
-export function Pricing() {
+export function Pricing({ dict }: { dict: Dictionary }) {
   let [activePeriod, setActivePeriod] = useState<"Monthly" | "Annually">(
     "Monthly"
   );
@@ -209,11 +164,10 @@ export function Pricing() {
             id="pricing-title"
             className="text-3xl font-medium tracking-tight text-stone-900"
           >
-            Flat pricing, no management fees.
+            {dict.homeSections.pricing.title}
           </h2>
           <p className="mt-2 text-lg text-stone-600">
-            Whether you’re one person trying to get ahead or a big firm trying
-            to take over the world, we’ve got a plan for you.
+            {dict.homeSections.pricing.description}
           </p>
         </div>
 
@@ -235,7 +189,9 @@ export function Pricing() {
                       : "-ml-px rounded-r-lg"
                   )}
                 >
-                  {period}
+                  {period === "Monthly"
+                    ? dict.homeSections.pricing.monthlyLabel
+                    : dict.homeSections.pricing.annuallyLabel}
                 </RadioGroup.Option>
               ))}
             </RadioGroup>
@@ -256,7 +212,9 @@ export function Pricing() {
                     period === "Annually" && "-ml-px"
                   )}
                 >
-                  {period}
+                  {period === "Monthly"
+                    ? dict.homeSections.pricing.monthlyLabel
+                    : dict.homeSections.pricing.annuallyLabel}
                 </div>
               ))}
             </div>
@@ -264,7 +222,7 @@ export function Pricing() {
         </div>
 
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-10 sm:mt-20 lg:max-w-none lg:grid-cols-3">
-          {plans.map((plan) => (
+          {dict.homeSections.pricing.plans.map((plan) => (
             <Plan key={plan.name} {...plan} activePeriod={activePeriod} />
           ))}
         </div>

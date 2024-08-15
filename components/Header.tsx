@@ -9,6 +9,7 @@ import { Container } from "@/components/Container";
 import { Logo } from "@/components/Logo";
 import { NavLinks } from "@/components/NavLinks";
 import { METADATA } from "@/lib/metadata";
+import { Dictionary } from "@/dictionaries";
 
 function MenuIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -51,17 +52,17 @@ function MobileNavLink(
   );
 }
 
-export function Header() {
+export function Header({ dict }: { dict: Dictionary }) {
   return (
     <header>
       <nav>
         <Container className="relative z-50 flex justify-between py-8">
           <div className="relative z-10 flex items-center gap-16">
-            <Link href="/" aria-label="Home">
-              <Logo className="h-10 w-auto" />
+            <Link href={dict.urls.home} aria-label="Home">
+              <Logo className="h-10 w-auto" label={dict.websiteName} />
             </Link>
             <div className="hidden lg:flex lg:gap-10">
-              <NavLinks type="header" />
+              <NavLinks type="header" dict={dict} />
             </div>
           </div>
           <div className="flex items-center gap-6">
@@ -105,20 +106,20 @@ export function Header() {
                         >
                           <div className="space-y-4">
                             <MobileNavLink href="/#features">
-                              Features
+                              {dict.labels.features}
                             </MobileNavLink>
                             <MobileNavLink href="/#reviews">
-                              Reviews
+                              {dict.labels.reviews}
                             </MobileNavLink>
                             <MobileNavLink href="/#pricing">
-                              Pricing
+                              {dict.labels.pricing}
                             </MobileNavLink>
                             <MobileNavLink href="/#faqs">FAQs</MobileNavLink>
                             <MobileNavLink href="/terms">
-                              User Terms
+                              {dict.labels.userTerms}
                             </MobileNavLink>
                             <MobileNavLink href="/privacy">
-                              Privacy Policy
+                              {dict.labels.privacyPolicy}
                             </MobileNavLink>
                           </div>
                           <div className="mt-8 flex flex-col gap-4">
@@ -126,7 +127,7 @@ export function Header() {
                               href={METADATA.appStoreLink}
                               target="_blank"
                             >
-                              Download the app
+                              {dict.labels.downloadTheApp}
                             </Button>
                           </div>
                         </Popover.Panel>
@@ -141,7 +142,7 @@ export function Header() {
               target="_blank"
               className="hidden lg:block"
             >
-              Download
+              {dict.labels.download}
             </Button>
           </div>
         </Container>

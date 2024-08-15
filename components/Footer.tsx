@@ -8,6 +8,7 @@ import { Logomark } from "@/components/Logo";
 import { NavLinks } from "@/components/NavLinks";
 import { METADATA } from "@/lib/metadata";
 import { QRCodeSVG } from "qrcode.react";
+import { Dictionary } from "@/dictionaries";
 
 function QrCodeBorder(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -21,7 +22,7 @@ function QrCodeBorder(props: React.ComponentPropsWithoutRef<"svg">) {
   );
 }
 
-export function Footer() {
+export function Footer({ dict }: { dict: Dictionary }) {
   return (
     <footer className="border-t border-stone-200">
       <Container>
@@ -30,14 +31,12 @@ export function Footer() {
             <div className="flex items-center text-stone-900">
               <Logomark className="h-10 w-10 flex-none fill-orange-500" />
               <div className="ml-4">
-                <p className="text-base font-semibold">Spark Memos</p>
-                <p className="mt-1 text-sm">
-                  Quickly capture your inspiration.
-                </p>
+                <p className="text-base font-semibold">{dict.appName}</p>
+                <p className="mt-1 text-sm">{dict.appSummary}</p>
               </div>
             </div>
             <nav className="mt-11 flex gap-8">
-              <NavLinks type="footer" />
+              <NavLinks type="footer" dict={dict} />
             </nav>
           </div>
           <div className="group relative -mx-4 flex items-center self-stretch p-4 transition-colors hover:bg-stone-100 sm:self-auto sm:rounded-2xl lg:mx-0 lg:self-auto lg:p-6">
@@ -54,11 +53,11 @@ export function Footer() {
               <p className="text-base font-semibold text-stone-900">
                 <Link href={METADATA.appStoreLink} target="_blank">
                   <span className="absolute inset-0 sm:rounded-2xl" />
-                  Download the app
+                  {dict.labels.downloadTheApp}
                 </Link>
               </p>
               <p className="mt-1 text-sm text-stone-700">
-                Scan the QR code to download the app from the App Store.
+                {dict.labels.scanTheQrCode}
               </p>
             </div>
           </div>

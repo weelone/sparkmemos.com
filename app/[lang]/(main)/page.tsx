@@ -5,17 +5,20 @@ import { Pricing } from "@/components/Pricing";
 import { PrimaryFeatures } from "@/components/PrimaryFeatures";
 import { Reviews } from "@/components/Reviews";
 import { SecondaryFeatures } from "@/components/SecondaryFeatures";
+import { getDictionary } from "@/dictionaries";
 
-export default function Home() {
+export default async function Home({ params }: { params: { lang: string } }) {
+  const dict = await getDictionary(params.lang);
+
   return (
     <>
-      <Hero />
-      <PrimaryFeatures />
-      <SecondaryFeatures />
-      <CallToAction />
-      <Reviews />
-      <Pricing />
-      <Faqs />
+      <Hero dict={dict} />
+      <PrimaryFeatures dict={dict} />
+      <SecondaryFeatures dict={dict} />
+      <CallToAction dict={dict} />
+      <Reviews dict={dict} />
+      <Pricing dict={dict} />
+      <Faqs dict={dict} />
     </>
   );
 }

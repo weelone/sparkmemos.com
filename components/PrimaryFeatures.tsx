@@ -32,6 +32,7 @@ import Image from "next/image";
 import screenshot1 from "@/public/screenshot1.png";
 import screenshot2 from "@/public/screenshot2.png";
 import screenshot3 from "@/public/screenshot3.png";
+import { Dictionary } from "@/dictionaries";
 
 const MotionAppScreenHeader = motion(AppScreen.Header);
 const MotionAppScreenBody = motion(AppScreen.Body);
@@ -41,29 +42,28 @@ interface CustomAnimationProps {
   changeCount: number;
 }
 
-const features = [
-  {
-    name: "Quickly capture your inspiration",
-    description:
-      "Open the app, type your thoughts, and hit save. It’s that easy. You can even add images and links to your memos.",
-    icon: DeviceTouchIcon,
-    screen: OverviewScreen,
-  },
-  {
-    name: "Collect your thoughts in one place",
-    description:
-      "You can organize your memos into collections to keep everything tidy.",
-    icon: DeviceNotificationIcon,
-    screen: CollectionsScreen,
-  },
-  {
-    name: "iCloud Sync",
-    description:
-      "Your memos are stored in the local storage of your phone. You can also enable iCloud sync to keep your data across all your devices.",
-    icon: DeviceUserIcon,
-    screen: SettingsScreen,
-  },
-];
+function getFeatures(dict: Dictionary) {
+  return [
+    {
+      name: dict.homeSections.primaryFeatures.inspiration.title,
+      description: dict.homeSections.primaryFeatures.inspiration.description,
+      icon: DeviceTouchIcon,
+      screen: OverviewScreen,
+    },
+    {
+      name: dict.homeSections.primaryFeatures.collections.title,
+      description: dict.homeSections.primaryFeatures.collections.description,
+      icon: DeviceNotificationIcon,
+      screen: CollectionsScreen,
+    },
+    {
+      name: dict.homeSections.primaryFeatures.sync.title,
+      description: dict.homeSections.primaryFeatures.sync.description,
+      icon: DeviceUserIcon,
+      screen: SettingsScreen,
+    },
+  ];
+}
 
 function DeviceUserIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -242,7 +242,7 @@ function usePrevious<T>(value: T) {
   return ref.current;
 }
 
-function FeaturesDesktop() {
+function FeaturesDesktop({ dict }: { dict: Dictionary }) {
   let [changeCount, setChangeCount] = useState(0);
   let [selectedIndex, setSelectedIndex] = useState(0);
   let prevIndex = usePrevious(selectedIndex);
@@ -266,7 +266,7 @@ function FeaturesDesktop() {
       vertical
     >
       <Tab.List className="relative z-10 order-last col-span-6 space-y-6">
-        {features.map((feature, featureIndex) => (
+        {getFeatures(dict).map((feature, featureIndex) => (
           <div
             key={feature.name}
             className="relative rounded-2xl transition-colors hover:bg-stone-800/30"
@@ -303,7 +303,7 @@ function FeaturesDesktop() {
               initial={false}
               custom={{ isForwards, changeCount }}
             >
-              {features.map((feature, featureIndex) =>
+              {getFeatures(dict).map((feature, featureIndex) =>
                 selectedIndex === featureIndex ? (
                   <Tab.Panel
                     static
@@ -325,7 +325,7 @@ function FeaturesDesktop() {
   );
 }
 
-function FeaturesMobile() {
+function FeaturesMobile({ dict }: { dict: Dictionary }) {
   let [activeIndex, setActiveIndex] = useState(0);
   let slideContainerRef = useRef<React.ElementRef<"div">>(null);
   let slideRefs = useRef<Array<React.ElementRef<"div">>>([]);
@@ -363,7 +363,7 @@ function FeaturesMobile() {
         ref={slideContainerRef}
         className="-mb-4 flex snap-x snap-mandatory -space-x-4 overflow-x-auto overscroll-x-contain scroll-smooth pb-4 [scrollbar-width:none] sm:-space-x-6 [&::-webkit-scrollbar]:hidden"
       >
-        {features.map((feature, featureIndex) => (
+        {getFeatures(dict).map((feature, featureIndex) => (
           <div
             key={featureIndex}
             ref={(ref) => ref && (slideRefs.current[featureIndex] = ref)}
@@ -393,7 +393,7 @@ function FeaturesMobile() {
         ))}
       </div>
       <div className="mt-6 flex justify-center gap-3">
-        {features.map((_, featureIndex) => (
+        {getFeatures(dict).map((_, featureIndex) => (
           <button
             type="button"
             key={featureIndex}
@@ -417,7 +417,7 @@ function FeaturesMobile() {
   );
 }
 
-export function PrimaryFeatures() {
+export function PrimaryFeatures({ dict }: { dict: Dictionary }) {
   return (
     <section
       id="features"
@@ -427,22 +427,18 @@ export function PrimaryFeatures() {
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
           <h2 className="text-3xl font-medium tracking-tight text-white">
-            Quickly capture your inspiration. Try it right now.
+            {dict.homeSections.primaryFeatures.title}
           </h2>
           <p className="mt-2 text-lg text-stone-400">
-            The perfect tool for capturing your inspiration on the go! You can
-            quickly jot down your thoughts, ideas, and creativity wherever you
-            are. Or use it for later reading, journaling, or even organizing
-            your day. The intuitive interface makes it easy to keep track of
-            your insights and stay organized.
+            {dict.homeSections.primaryFeatures.description}
           </p>
         </div>
       </Container>
       <div className="mt-16 md:hidden">
-        <FeaturesMobile />
+        <FeaturesMobile dict={dict} />
       </div>
       <Container className="hidden md:mt-20 md:block">
-        <FeaturesDesktop />
+        <FeaturesDesktop dict={dict} />
       </Container>
     </section>
   );

@@ -1,44 +1,42 @@
 import { useId } from "react";
 
 import { Container } from "@/components/Container";
+import { Dictionary } from "@/dictionaries";
 
-const features = [
-  {
-    name: "Multi-type Memos",
-    description:
-      "Create memos with text, images, or links to keep all your thoughts in one place.",
-    icon: DeviceListIcon,
-  },
-  {
-    name: "Custom Collections",
-    description:
-      "Organize your memos in collections to keep your thoughts in order.",
-    icon: DeviceCardsIcon,
-  },
-  {
-    name: "Share Extension",
-    description:
-      "With the share extension, you can save any link, text, or image from any app.",
-    icon: DeviceArrowIcon,
-  },
-  {
-    name: "Custom Theme",
-    description:
-      "You can customize the app to match your style with custom themes.",
-    icon: DeviceChartIcon,
-  },
-  {
-    name: "Quickly Review",
-    description: "Quickly review, keep your memos refresh.",
-    icon: DeviceClockIcon,
-  },
-  {
-    name: "Privacy First",
-    description:
-      "Your data is yours. We don’t store your data on our servers. It’s all on your device.",
-    icon: DeviceLockIcon,
-  },
-];
+function getFeatures(dict: Dictionary) {
+  return [
+    {
+      name: dict.homeSections.secondaryFeatures.types.title,
+      description: dict.homeSections.secondaryFeatures.types.description,
+      icon: DeviceListIcon,
+    },
+    {
+      name: dict.homeSections.secondaryFeatures.collections.title,
+      description: dict.homeSections.secondaryFeatures.collections.description,
+      icon: DeviceCardsIcon,
+    },
+    {
+      name: dict.homeSections.secondaryFeatures.share.title,
+      description: dict.homeSections.secondaryFeatures.share.description,
+      icon: DeviceArrowIcon,
+    },
+    {
+      name: dict.homeSections.secondaryFeatures.theme.title,
+      description: dict.homeSections.secondaryFeatures.theme.description,
+      icon: DeviceChartIcon,
+    },
+    {
+      name: dict.homeSections.secondaryFeatures.review.title,
+      description: dict.homeSections.secondaryFeatures.review.description,
+      icon: DeviceClockIcon,
+    },
+    {
+      name: dict.homeSections.secondaryFeatures.privacy.title,
+      description: dict.homeSections.secondaryFeatures.privacy.description,
+      icon: DeviceLockIcon,
+    },
+  ];
+}
 
 function DeviceArrowIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -185,7 +183,7 @@ function DeviceChartIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   );
 }
 
-export function SecondaryFeatures() {
+export function SecondaryFeatures({ dict }: { dict: Dictionary }) {
   return (
     <section
       id="secondary-features"
@@ -195,18 +193,17 @@ export function SecondaryFeatures() {
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
           <h2 className="text-3xl font-medium tracking-tight text-stone-900">
-            Now is the time to get started.
+            {dict.homeSections.secondaryFeatures.title}
           </h2>
           <p className="mt-2 text-lg text-stone-600">
-            With Spark Memos, you can quickly capture your inspiration and keep
-            everything in one place.
+            {dict.homeSections.secondaryFeatures.description}
           </p>
         </div>
         <ul
           role="list"
           className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-20 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3"
         >
-          {features.map((feature) => (
+          {getFeatures(dict).map((feature) => (
             <li
               key={feature.name}
               className="rounded-2xl border border-stone-200 p-8"

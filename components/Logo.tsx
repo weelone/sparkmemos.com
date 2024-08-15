@@ -20,8 +20,9 @@ export function Logomark({
 
 export function Logo({
   className,
+  label,
   ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+}: React.ComponentPropsWithoutRef<"div"> & { label: string }) {
   return (
     <div
       className={clsx(className, "flex gap-2 items-center")}
@@ -29,7 +30,7 @@ export function Logo({
       {...props}
     >
       <Logomark />
-      <span className="text-xl font-semibold">Spark Memos</span>
+      <span className="text-xl font-semibold">{label}</span>
     </div>
   );
 }

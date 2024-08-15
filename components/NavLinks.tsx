@@ -3,26 +3,33 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import { Dictionary } from "@/dictionaries";
 
-export function NavLinks({ type }: { type: "header" | "footer" }) {
+export function NavLinks({
+  type,
+  dict,
+}: {
+  type: "header" | "footer";
+  dict: Dictionary;
+}) {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   let timeoutRef = useRef<number | null>(null);
 
   return (
     type === "header"
       ? [
-          ["Features", "/#features"],
-          ["Reviews", "/#reviews"],
-          ["Pricing", "/#pricing"],
-          ["FAQs", "/#faqs"],
-          ["Terms", "/terms"],
-          ["Privacy", "/privacy"],
+          [dict.labels.features, `${dict.urls.home}#features`],
+          [dict.labels.reviews, `${dict.urls.home}#reviews`],
+          [dict.labels.pricing, `${dict.urls.home}#pricing`],
+          [dict.labels.faq, `${dict.urls.home}#faqs`],
+          [dict.labels.terms, dict.urls.terms],
+          [dict.labels.privacy, dict.urls.privacy],
         ]
       : [
-          ["Reviews", "/#reviews"],
-          ["FAQs", "/#faqs"],
-          ["Terms", "/terms"],
-          ["Privacy", "/privacy"],
+          [dict.labels.reviews, `${dict.urls.home}#reviews`],
+          [dict.labels.faq, `${dict.urls.home}#faqs`],
+          [dict.labels.terms, dict.urls.terms],
+          [dict.labels.privacy, dict.urls.privacy],
         ]
   ).map(([label, href], index) => (
     <Link

@@ -1,8 +1,9 @@
 import { AppStoreLink } from "@/components/AppStoreLink";
 import { CircleBackground } from "@/components/CircleBackground";
 import { Container } from "@/components/Container";
+import { Dictionary } from "@/dictionaries";
 
-export function CallToAction() {
+export function CallToAction({ dict }: { dict: Dictionary }) {
   return (
     <section
       id="get-free-shares-today"
@@ -14,11 +15,10 @@ export function CallToAction() {
       <Container className="relative">
         <div className="mx-auto max-w-md sm:text-center">
           <h2 className="text-3xl font-medium tracking-tight text-white sm:text-4xl">
-            Download now to start
+            {dict.homeSections.callToAction.title}
           </h2>
           <p className="mt-4 text-lg text-stone-300">
-            You can get started immediately after downloaded from App Store. No
-            sing in or sign up needed.
+            {dict.homeSections.callToAction.description}
           </p>
           <div className="mt-8 flex justify-center">
             <AppStoreLink color="white" />
