@@ -3,11 +3,23 @@ import "server-only";
 const dictionaries = {
   en: () => import("./en.ts").then((module) => module.default),
   zh: () => import("./zh.ts").then((module) => module.default),
+  ja: () => import("./ja.ts").then((module) => module.default),
+  de: () => import("./de.ts").then((module) => module.default),
+  es: () => import("./es.ts").then((module) => module.default),
+  fr: () => import("./fr.ts").then((module) => module.default),
+  it: () => import("./it.ts").then((module) => module.default),
+  ko: () => import("./ko.ts").then((module) => module.default),
 };
 
 export const languageLabels = {
   en: "English",
   zh: "中文",
+  ja: "日本語",
+  de: "Deutsch",
+  es: "Español",
+  fr: "Français",
+  it: "Italiano",
+  ko: "한국어",
 };
 
 export type Language = keyof typeof languageLabels;

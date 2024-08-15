@@ -1,13 +1,3 @@
-import {
-  DiageoLogo,
-  LaravelLogo,
-  MirageLogo,
-  ReversableLogo,
-  StatamicLogo,
-  StaticKitLogo,
-  TransistorLogo,
-  TupleLogo,
-} from "@/components/StockLogos";
 import { METADATA } from "@/lib/metadata";
 
 const dictionary = {
