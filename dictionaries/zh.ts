@@ -30,6 +30,7 @@ const dictionary = {
   ],
   urls: {
     home: "/zh",
+    blog: "/zh/blog",
     terms: "/zh/terms",
     privacy: "/zh/privacy",
   },
@@ -45,6 +46,15 @@ const dictionary = {
     privacyPolicy: "隐私政策",
     downloadTheApp: "下载应用",
     scanTheQrCode: "扫描二维码立即从 App Store 下载",
+
+    blog: "博客",
+  },
+  blog: {
+    title: "星火记博客",
+    description: "阅读我们的博客，了解更多关于星火记的信息。",
+    toc: "目录",
+    categories: "分类",
+    tags: "标签",
   },
   homeSections: {
     hero: {

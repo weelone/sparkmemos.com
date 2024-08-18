@@ -32,6 +32,7 @@ const dictionary = {
   ],
   urls: {
     home: "/de",
+    blog: "/de/blog",
     terms: "/de/terms",
     privacy: "/de/privacy",
   },
@@ -48,6 +49,16 @@ const dictionary = {
     downloadTheApp: "App herunterladen",
     scanTheQrCode:
       "Scannen Sie den QR-Code, um die App aus dem App Store herunterzuladen.",
+
+    blog: "Blog",
+  },
+  blog: {
+    title: "Spark Memos Blog",
+    description:
+      "Lesen Sie unseren Blog, um mehr über Spark Memos zu erfahren.",
+    toc: "Inhaltsverzeichnis",
+    categories: "Kategorien",
+    tags: "Schlagworte",
   },
   homeSections: {
     hero: {

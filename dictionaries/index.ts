@@ -24,7 +24,7 @@ export const languageLabels = {
 
 export type Language = keyof typeof languageLabels;
 
-export const dictionaryKeys = Object.keys(dictionaries);
+export const dictionaryKeys = Object.keys(dictionaries) as Language[];
 
 export async function getDictionary(locale = "en") {
   if (!(locale in dictionaries)) {

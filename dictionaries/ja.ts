@@ -32,6 +32,7 @@ const dictionary = {
   ],
   urls: {
     home: "/ja",
+    blog: "/ja/blog",
     terms: "/ja/terms",
     privacy: "/ja/privacy",
   },
@@ -47,6 +48,15 @@ const dictionary = {
     privacyPolicy: "プライバシーポリシー",
     downloadTheApp: "アプリをダウンロード",
     scanTheQrCode: "QRコードをスキャンしてApp Storeからアプリをダウンロード。",
+
+    blog: "ブログ",
+  },
+  blog: {
+    title: "Spark Memosブログ",
+    description: "Spark Memosについてもっと知るには、ブログをお読みください。",
+    toc: "目次",
+    categories: "カテゴリー",
+    tags: "タグ",
   },
   homeSections: {
     hero: {

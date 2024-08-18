@@ -22,12 +22,12 @@ export function NavLinks({
           [dict.labels.reviews, `${dict.urls.home}#reviews`],
           [dict.labels.pricing, `${dict.urls.home}#pricing`],
           [dict.labels.faq, `${dict.urls.home}#faqs`],
-          [dict.labels.terms, dict.urls.terms],
-          [dict.labels.privacy, dict.urls.privacy],
+          [dict.labels.blog, dict.urls.blog],
         ]
       : [
           [dict.labels.reviews, `${dict.urls.home}#reviews`],
           [dict.labels.faq, `${dict.urls.home}#faqs`],
+          [dict.labels.blog, dict.urls.blog],
           [dict.labels.terms, dict.urls.terms],
           [dict.labels.privacy, dict.urls.privacy],
         ]
