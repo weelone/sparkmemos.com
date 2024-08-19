@@ -71,7 +71,7 @@ export default async function PostPage({
   return (
     <main className="flex mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-8 mb-16">
       <div className="flex flex-col gap-4">
-        <article className="bg-white/50 dark:bg-indigo-100/5 flex flex-col gap-2 md:basis-3/4 lg:basis-2/3 grow-0 min-w-0">
+        <article className="flex flex-col gap-2 max-w-prose grow-0 min-w-0">
           <h1 className="text-3xl font-serif">{post.title}</h1>
           <div className="opacity-50 flex items-center gap-2">
             <Languages className="w-4 h-4" />
