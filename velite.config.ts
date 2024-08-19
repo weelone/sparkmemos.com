@@ -124,6 +124,7 @@ const posts = defineCollection({
 
 export default defineConfig({
   root: "blog",
+  strict: true,
   output: {
     data: ".velite",
     assets: "public/static/posts",

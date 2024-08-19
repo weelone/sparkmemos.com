@@ -1,14 +1,11 @@
-import Image from "next/image";
 import Link from "next/link";
 
-import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
-import { TextField } from "@/components/Fields";
 import { Logomark } from "@/components/Logo";
 import { NavLinks } from "@/components/NavLinks";
 import { METADATA } from "@/lib/metadata";
-import { QRCodeSVG } from "qrcode.react";
 import { Dictionary } from "@/dictionaries";
+import { AppStoreQRCode } from "./QRCode";
 
 function QrCodeBorder(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -42,12 +39,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
           <div className="group relative -mx-4 flex items-center self-stretch p-4 transition-colors hover:bg-stone-100 sm:self-auto sm:rounded-2xl lg:mx-0 lg:self-auto lg:p-6">
             <div className="relative flex h-24 w-24 flex-none items-center justify-center">
               <QrCodeBorder className="absolute inset-0 h-full w-full stroke-stone-300 transition-colors group-hover:stroke-orange-500" />
-              <QRCodeSVG
-                className="w-20 h-20"
-                value={METADATA.appStoreLink}
-                bgColor="transparent"
-                fgColor="currentColor"
-              />
+              <AppStoreQRCode />
             </div>
             <div className="ml-8 lg:w-64">
               <p className="text-base font-semibold text-stone-900">
