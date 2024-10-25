@@ -57,7 +57,7 @@ export default async function PostsPage({
         <ul className="basis-3/4 lg:basis-2/3 flex flex-col gap-4">
           {posts.map((post) => (
             <li key={post.slug} className="flex flex-col gap-1">
-              <Link href={post.seoLink}>
+              <Link href={post.permalink}>
                 <h1 className="text-2xl font-serif underline">{post.title}</h1>
               </Link>
               <p className="opacity-70">{post.description}</p>

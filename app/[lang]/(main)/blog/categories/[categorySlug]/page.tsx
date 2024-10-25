@@ -78,7 +78,7 @@ export default async function CategoryPostsPage({
         <ul className="lg:basis-3/4 my-16">
           {posts.map((post) => (
             <li key={post.slug} className="flex flex-col gap-1">
-              <Link href={post.seoLink}>
+              <Link href={post.permalink}>
                 <h1 className="text-2xl font-serif underline">{post.title}</h1>
               </Link>
               <p className="opacity-70">{post.description}</p>

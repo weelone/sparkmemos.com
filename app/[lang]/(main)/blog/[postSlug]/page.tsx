@@ -11,14 +11,12 @@ export const runtime = "edge";
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: string; slug: string[] };
+  params: { lang: string; postSlug: string };
 }): Promise<Metadata> {
   const dictionary = await getDictionary(params.lang);
 
-  const [postSlug] = params.slug;
-
   const post = posts.find(
-    (post) => post.lang === params.lang && post.slug === postSlug
+    (post) => post.lang === params.lang && post.slug === params.postSlug
   );
 
   if (!post) {
@@ -48,20 +46,16 @@ export async function generateMetadata({
 export default async function PostPage({
   params,
 }: {
-  params: {
-    lang: string;
-    slug: string[];
-  };
+  params: { lang: string; postSlug: string };
 }) {
   const dictionary = await getDictionary(params.lang);
-  const [postSlug] = params.slug;
 
   const post = posts.find(
-    (post) => post.lang === params.lang && post.slug === postSlug
+    (post) => post.lang === params.lang && post.slug === params.postSlug
   );
 
   const otherLanguages = posts.filter(
-    (post) => post.slug === postSlug && post.lang !== params.lang
+    (post) => post.slug === params.postSlug && post.lang !== params.lang
   );
 
   if (!post) {

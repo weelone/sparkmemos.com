@@ -118,7 +118,6 @@ const posts = defineCollection({
     .transform((data) => ({
       ...data,
       permalink: `/${data.lang}/blog/${data.slug}`,
-      seoLink: `/${data.lang}/blog/${data.slug}/${data.title}`,
     })),
 });
 
