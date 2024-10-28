@@ -43,6 +43,7 @@ export async function generateMetadata({
       title: dict.websiteName,
       description: dict.defaultDescription,
       siteName: dict.websiteName,
+      locale: params.lang,
       images: "/social-banner.png",
     },
     twitter: {

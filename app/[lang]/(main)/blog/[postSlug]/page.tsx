@@ -102,8 +102,9 @@ export default async function PostPage({
               "prose",
               // "dark:prose-invert",
               "prose-headings:font-serif prose-headings:mt-8",
-              "prose-h1:text-xl",
-              "prose-h2:text-lg",
+              "prose-h1:text-2xl",
+              "prose-h2:text-xl",
+              "prose-h3:text-lg",
               "prose-blockquote:font-normal",
               "prose-pre:border prose-pre:rounded-xl",
               "before:prose-p:content-none after:prose-p:content-none"

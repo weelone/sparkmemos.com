@@ -16,13 +16,16 @@ keywords:
   - Capturing ideas
   - Capturing inspiration
   - Spark Memos usage tutorial
+  - Tana
+  - Tana Capture
+  - Flomo
 ---
 
-# Spark Memos: Your Best Companion for Capturing Inspiration
+## Spark Memos: Your Best Companion for Capturing Inspiration
 
 In this era of information overload, countless ideas and inspirations flash through our minds every day. How can we effectively capture and manage these precious sparks of thought? Spark Memos has emerged as your reliable assistant for recording inspiration anytime, anywhere.
 
-## What is Spark Memos?
+### What is Spark Memos?
 
 Spark Memos is a short note-taking app designed specifically for capturing instant thoughts. It not only helps you record sudden inspirations but also serves as a versatile tool in daily life, suitable for the following scenarios:
 
@@ -31,7 +34,7 @@ Spark Memos is a short note-taking app designed specifically for capturing insta
 - Diary keeping: Concisely record daily life moments
 - Reading notes: Excerpt brilliant passages, record post-reading thoughts
 
-## Core Features of Spark Memos
+### Core Features of Spark Memos
 
 1. Diverse Memo Content
 
@@ -59,7 +62,7 @@ Spark Memos is not only a personal thought repository but also a platform for sh
 - Convert memos into beautiful images for sharing
 - Quickly create new memos through the sharing function of other apps
 
-## Tips for Using Spark Memos
+### Tips for Using Spark Memos
 
 1. **Record anytime**: Don't wait for the "perfect" idea, note down every moment of inspiration.
 2. **Regular review**: Develop a habit of browsing your memos regularly; you might discover new connections and inspirations.

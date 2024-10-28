@@ -9,11 +9,11 @@ name:
   ja: 使用例
   ko: 사용 예
 description:
-  en: Share some usage examples
-  zh: 分享一些使用示例
-  es: Compartir algunos ejemplos de uso
-  de: Teilen Sie einige Beispiele für die Verwendung
-  fr: Partager quelques exemples d'utilisation
-  it: Condividere alcuni esempi di utilizzo
-  ja: 使用例を共有
-  ko: 사용 예 공유
+  en: Share some usage examples for Spark Memos.
+  zh: 分享一些星火记的使用示例。
+  es: Compartir algunos ejemplos de uso de Spark Memos.
+  de: Teilen Sie einige Beispiele für die Verwendung von Spark Memos.
+  fr: Partagez quelques exemples d'utilisation de Spark Memos.
+  it: Condividi alcuni esempi di utilizzo di Spark Memos.
+  ja: Spark Memos の使用例を共有します。
+  ko: Spark Memos의 사용 예를 공유합니다.

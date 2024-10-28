@@ -11,6 +11,9 @@ const dictionary = {
     "L'outil parfait pour capturer votre inspiration en déplacement ! Vous pouvez rapidement noter vos pensées, idées et créativité où que vous soyez. Ou utilisez-le pour une lecture ultérieure, la tenue d'un journal, ou même pour organiser votre journée. L'interface intuitive facilite le suivi de vos idées et vous aide à rester organisé.",
   defaultKeywords: [
     "Spark Memos",
+    "Tana",
+    "Tana Capture",
+    "Flomo",
     "iOS",
     "App",
     "iOS App",
