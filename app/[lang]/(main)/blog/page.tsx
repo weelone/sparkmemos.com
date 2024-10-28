@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Language, getDictionary } from "@/dictionaries";
 import { Metadata } from "next";
 import { CalendarDays } from "lucide-react";
+import { getAlternateLanguages } from "@/lib/metadata";
 
 export const runtime = "edge";
 
@@ -19,14 +20,22 @@ export async function generateMetadata({
     description: dictionary.blog.description,
     keywords: dictionary.defaultKeywords,
     openGraph: {
+      type: "website",
+      url: new URL(dictionary.urls.blog, dictionary.baseUrl).href,
       title: dictionary.blog.title,
       description: dictionary.blog.description,
+      siteName: dictionary.websiteName,
+      locale: params.lang,
+      images: "/social-banner.png",
     },
     twitter: {
       title: dictionary.blog.title,
       description: dictionary.blog.description,
       site: "@noobnooc",
       card: "summary_large_image",
+    },
+    alternates: {
+      languages: await getAlternateLanguages((dict) => dict.urls.blog),
     },
   };
 }

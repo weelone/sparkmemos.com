@@ -1,4 +1,4 @@
-import { METADATA } from "@/lib/metadata";
+import { METADATA } from "@/constants/metadata";
 
 const dictionary = {
   baseUrl: "https://sparkmemos.com",

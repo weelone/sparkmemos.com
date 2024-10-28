@@ -1,6 +1,6 @@
 import Link from "next/link";
 import clsx from "clsx";
-import { METADATA } from "@/lib/metadata";
+import { METADATA } from "@/constants/metadata";
 
 export function AppStoreLink({
   color = "black",

@@ -1,6 +1,6 @@
 "use client";
 
-import { METADATA } from "@/lib/metadata";
+import { METADATA } from "@/constants/metadata";
 import { QRCodeSVG } from "qrcode.react";
 
 export function AppStoreQRCode() {

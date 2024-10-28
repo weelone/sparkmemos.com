@@ -8,7 +8,7 @@ import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { Logo } from "@/components/Logo";
 import { NavLinks } from "@/components/NavLinks";
-import { METADATA } from "@/lib/metadata";
+import { METADATA } from "@/constants/metadata";
 import { Dictionary } from "@/dictionaries";
 
 function MenuIcon(props: React.ComponentPropsWithoutRef<"svg">) {

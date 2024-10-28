@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Logomark } from "@/components/Logo";
 import { NavLinks } from "@/components/NavLinks";
-import { METADATA } from "@/lib/metadata";
+import { METADATA } from "@/constants/metadata";
 import { Dictionary } from "@/dictionaries";
 import { AppStoreQRCode } from "./QRCode";
 

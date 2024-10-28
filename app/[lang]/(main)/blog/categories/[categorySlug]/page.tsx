@@ -4,6 +4,7 @@ import { Language, getDictionary } from "@/dictionaries";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CalendarDays } from "lucide-react";
+import { getAlternateLanguages } from "@/lib/metadata";
 
 export const runtime = "edge";
 
@@ -27,14 +28,24 @@ export async function generateMetadata({
     description: category.description?.[params.lang],
     keywords: dictionary.defaultKeywords,
     openGraph: {
+      type: "website",
+      url: new URL(category.permalink[params.lang], dictionary.baseUrl).href,
       title: category.name[params.lang],
       description: category.description?.[params.lang],
+      siteName: dictionary.websiteName,
+      locale: params.lang,
+      images: "/social-banner.png",
     },
     twitter: {
       title: category.name[params.lang],
       description: category.description?.[params.lang],
       site: "@noobnooc",
       card: "summary_large_image",
+    },
+    alternates: {
+      languages: await getAlternateLanguages(
+        (dict, lang) => category.permalink[lang]
+      ),
     },
   };
 }

@@ -2,7 +2,8 @@ import { Inter } from "next/font/google";
 import clsx from "clsx";
 
 import "../globals.css";
-import { METADATA } from "@/lib/metadata";
+import { getAlternateLanguages } from "@/lib/metadata";
+import { METADATA } from "@/constants/metadata";
 import { dictionaryKeys, getDictionary } from "@/dictionaries";
 import { Metadata } from "next";
 
@@ -20,13 +21,6 @@ export async function generateMetadata({
   params: { lang: string };
 }): Promise<Metadata> {
   const dict = await getDictionary(params.lang);
-  const langEntries = await Promise.all(
-    dictionaryKeys.map(async (lang) => {
-      const dictionary = await getDictionary(lang);
-
-      return [lang, dictionary.urls.home];
-    })
-  );
 
   return {
     metadataBase: new URL(dict.baseUrl),
@@ -40,6 +34,8 @@ export async function generateMetadata({
       appId: METADATA.appId,
     },
     openGraph: {
+      type: "website",
+      url: new URL(dict.urls.home, dict.baseUrl).href,
       title: dict.websiteName,
       description: dict.defaultDescription,
       siteName: dict.websiteName,
@@ -54,7 +50,7 @@ export async function generateMetadata({
       images: "/social-banner.png",
     },
     alternates: {
-      languages: Object.fromEntries(langEntries),
+      languages: await getAlternateLanguages((dict) => dict.urls.home),
     },
   };
 }

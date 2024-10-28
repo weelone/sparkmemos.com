@@ -23,15 +23,21 @@ export async function generateMetadata({
     notFound();
   }
 
+  const allLanguages = posts.filter((post) => post.slug === params.postSlug);
+
   return {
     metadataBase: new URL(dictionary.baseUrl),
     title: post.title,
     description: post.title,
     keywords: dictionary.defaultKeywords,
     openGraph: {
+      type: "website",
+      url: new URL(post.permalink, dictionary.baseUrl).href,
       title: post.title,
       description: post.title,
-      images: "/static/banner.png",
+      siteName: dictionary.websiteName,
+      locale: params.lang,
+      images: post.cover?.src ?? "/social-banner.png",
     },
     twitter: {
       title: post.title,
@@ -39,6 +45,14 @@ export async function generateMetadata({
       site: "@noobnooc",
       card: "summary_large_image",
       images: "/static/banner.png",
+    },
+    alternates: {
+      languages: Object.fromEntries(
+        allLanguages.map((post) => [
+          post.lang,
+          new URL(post.permalink, dictionary.baseUrl).href,
+        ])
+      ),
     },
   };
 }
