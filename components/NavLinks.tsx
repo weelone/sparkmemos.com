@@ -25,9 +25,9 @@ export function NavLinks({
           [dict.labels.blog, dict.urls.blog],
         ]
       : [
-          [dict.labels.reviews, `${dict.urls.home}#reviews`],
-          [dict.labels.faq, `${dict.urls.home}#faqs`],
-          [dict.labels.blog, dict.urls.blog],
+          ["Echobell", "https://echobell.one"],
+          ["CassetteOne", "https://cassette.one"],
+          ["Weelone Ltd", "https://weelone.com"],
           [dict.labels.terms, dict.urls.terms],
           [dict.labels.privacy, dict.urls.privacy],
         ]
