@@ -1,7 +1,7 @@
 import { posts } from "@/.velite";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getDictionary, languageLabels } from "@/dictionaries";
+import { getDictionary, Language, languageLabels } from "@/dictionaries";
 import { Metadata } from "next";
 import clsx from "clsx";
 import { CalendarDays, Languages } from "lucide-react";
@@ -11,19 +11,20 @@ export const runtime = "edge";
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: string; postSlug: string };
+  params: Promise<{ lang: Language; postSlug: string }>;
 }): Promise<Metadata> {
-  const dictionary = await getDictionary(params.lang);
+  const { lang, postSlug } = await params;
+  const dictionary = await getDictionary(lang);
 
   const post = posts.find(
-    (post) => post.lang === params.lang && post.slug === params.postSlug
+    (post) => post.lang === lang && post.slug === postSlug
   );
 
   if (!post) {
     notFound();
   }
 
-  const allLanguages = posts.filter((post) => post.slug === params.postSlug);
+  const allLanguages = posts.filter((post) => post.slug === postSlug);
 
   return {
     metadataBase: new URL(dictionary.baseUrl),
@@ -36,7 +37,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.title,
       siteName: dictionary.websiteName,
-      locale: params.lang,
+      locale: lang,
       images: post.cover?.src ?? "/social-banner.png",
     },
     twitter: {
@@ -60,16 +61,17 @@ export async function generateMetadata({
 export default async function PostPage({
   params,
 }: {
-  params: { lang: string; postSlug: string };
+  params: Promise<{ lang: Language; postSlug: string }>;
 }) {
-  const dictionary = await getDictionary(params.lang);
+  const { lang, postSlug } = await params;
+  const dictionary = await getDictionary(lang);
 
   const post = posts.find(
-    (post) => post.lang === params.lang && post.slug === params.postSlug
+    (post) => post.lang === lang && post.slug === postSlug
   );
 
   const otherLanguages = posts.filter(
-    (post) => post.slug === params.postSlug && post.lang !== params.lang
+    (post) => post.slug === postSlug && post.lang !== lang
   );
 
   if (!post) {
@@ -101,7 +103,7 @@ export default async function PostPage({
           <div className="opacity-50 flex items-center gap-4">
             <span className="flex gap-2 items-center text-sm">
               <CalendarDays className="w-4 h-4" />
-              {Intl.DateTimeFormat(params.lang, {
+              {Intl.DateTimeFormat(lang, {
                 dateStyle: "medium",
               }).format(new Date(post.date))}
             </span>

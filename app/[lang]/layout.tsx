@@ -4,7 +4,7 @@ import clsx from "clsx";
 import "../globals.css";
 import { getAlternateLanguages } from "@/lib/metadata";
 import { METADATA } from "@/constants/metadata";
-import { dictionaryKeys, getDictionary } from "@/dictionaries";
+import { getDictionary, Language } from "@/dictionaries";
 import { Metadata } from "next";
 
 export const runtime = "edge";
@@ -18,9 +18,10 @@ const inter = Inter({
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: string };
+  params: Promise<{ lang: Language }>;
 }): Promise<Metadata> {
-  const dict = await getDictionary(params.lang);
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
 
   return {
     metadataBase: new URL(dict.baseUrl),
@@ -39,7 +40,7 @@ export async function generateMetadata({
       title: dict.websiteName,
       description: dict.defaultDescription,
       siteName: dict.websiteName,
-      locale: params.lang,
+      locale: lang,
       images: "/social-banner.png",
     },
     twitter: {
@@ -55,18 +56,17 @@ export async function generateMetadata({
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: {
-    lang: string;
-  };
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang } = await params;
   return (
     <html
-      lang={params.lang}
+      lang={lang}
       className={clsx("bg-stone-50 antialiased", inter.variable)}
     >
       <body>{children}</body>

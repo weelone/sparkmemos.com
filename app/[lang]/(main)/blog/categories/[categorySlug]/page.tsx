@@ -11,11 +11,12 @@ export const runtime = "edge";
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: Language; categorySlug: string };
+  params: Promise<{ lang: Language; categorySlug: string }>;
 }): Promise<Metadata> {
-  const dictionary = await getDictionary(params.lang);
+  const { lang, categorySlug } = await params;
+  const dictionary = await getDictionary(lang);
   const category = categories.find(
-    (category) => category.slug === params.categorySlug
+    (category) => category.slug === categorySlug
   );
 
   if (!category) {
@@ -24,27 +25,27 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(dictionary.baseUrl),
-    title: category.name[params.lang],
-    description: category.description?.[params.lang],
+    title: category.name[lang],
+    description: category.description?.[lang],
     keywords: dictionary.defaultKeywords,
     openGraph: {
       type: "website",
-      url: new URL(category.permalink[params.lang], dictionary.baseUrl).href,
-      title: category.name[params.lang],
-      description: category.description?.[params.lang],
+      url: new URL(category.permalink[lang], dictionary.baseUrl).href,
+      title: category.name[lang],
+      description: category.description?.[lang],
       siteName: dictionary.websiteName,
-      locale: params.lang,
+      locale: lang,
       images: "/social-banner.png",
     },
     twitter: {
-      title: category.name[params.lang],
-      description: category.description?.[params.lang],
+      title: category.name[lang],
+      description: category.description?.[lang],
       site: "@noobnooc",
       card: "summary_large_image",
     },
     alternates: {
       languages: await getAlternateLanguages(
-        (dict, lang) => category.permalink[lang]
+        (dict, _lang) => category.permalink[_lang]
       ),
     },
   };
@@ -62,30 +63,29 @@ function getPublishedPosts(lang: string, category: string) {
 export default async function CategoryPostsPage({
   params,
 }: {
-  params: {
+  params: Promise<{
     lang: Language;
     categorySlug: string;
-  };
+  }>;
 }) {
+  const { lang, categorySlug } = await params;
   const category = categories.find(
-    (category) => category.slug === params.categorySlug
+    (category) => category.slug === categorySlug
   );
 
   if (!category) {
     notFound();
   }
 
-  const posts = getPublishedPosts(params.lang, category.slug);
+  const posts = getPublishedPosts(lang, category.slug);
 
   return (
     <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex">
       <div className="md:basis-3/4 lg:basis-2/3">
         <h1 className="text-4xl font-bold font-serif mt-4">
-          {category.name[params.lang]}
+          {category.name[lang]}
         </h1>
-        <p className="text-xl opacity-70">
-          {category.description?.[params.lang]}
-        </p>
+        <p className="text-xl opacity-70">{category.description?.[lang]}</p>
         <ul className="lg:basis-3/4 my-16">
           {posts.map((post) => (
             <li key={post.slug} className="flex flex-col gap-1">
@@ -96,7 +96,7 @@ export default async function CategoryPostsPage({
               <div className="opacity-50 flex items-center gap-4">
                 <span className="flex gap-2 items-center text-sm">
                   <CalendarDays className="w-4 h-4" />
-                  {Intl.DateTimeFormat(params.lang, {
+                  {Intl.DateTimeFormat(lang, {
                     dateStyle: "medium",
                   }).format(new Date(post.date))}
                 </span>

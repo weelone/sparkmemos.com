@@ -5,10 +5,15 @@ import { Pricing } from "@/components/Pricing";
 import { PrimaryFeatures } from "@/components/PrimaryFeatures";
 import { Reviews } from "@/components/Reviews";
 import { SecondaryFeatures } from "@/components/SecondaryFeatures";
-import { getDictionary } from "@/dictionaries";
+import { getDictionary, Language } from "@/dictionaries";
 
-export default async function Home({ params }: { params: { lang: string } }) {
-  const dict = await getDictionary(params.lang);
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ lang: Language }>;
+}) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
 
   return (
     <>

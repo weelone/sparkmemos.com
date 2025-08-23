@@ -10,9 +10,10 @@ export const runtime = "edge";
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: string };
+  params: Promise<{ lang: Language }>;
 }): Promise<Metadata> {
-  const dictionary = await getDictionary(params.lang);
+  const { lang } = await params;
+  const dictionary = await getDictionary(lang);
 
   return {
     metadataBase: new URL(dictionary.baseUrl),
@@ -25,7 +26,7 @@ export async function generateMetadata({
       title: dictionary.blog.title,
       description: dictionary.blog.description,
       siteName: dictionary.websiteName,
-      locale: params.lang,
+      locale: lang,
       images: "/social-banner.png",
     },
     twitter: {
@@ -49,12 +50,13 @@ function getPublishedPosts(lang: string) {
 export default async function PostsPage({
   params,
 }: {
-  params: {
+  params: Promise<{
     lang: Language;
-  };
+  }>;
 }) {
-  const dictionary = await getDictionary(params.lang);
-  const posts = getPublishedPosts(params.lang);
+  const { lang } = await params;
+  const dictionary = await getDictionary(lang);
+  const posts = getPublishedPosts(lang);
 
   return (
     <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -73,7 +75,7 @@ export default async function PostsPage({
               <div className="opacity-50 flex items-center gap-4">
                 <span className="flex gap-2 items-center text-sm">
                   <CalendarDays className="w-4 h-4" />
-                  {Intl.DateTimeFormat(params.lang, {
+                  {Intl.DateTimeFormat(lang, {
                     dateStyle: "medium",
                   }).format(new Date(post.date))}
                 </span>
@@ -85,11 +87,9 @@ export default async function PostsPage({
           <ol className="underline font-serif">
             {categories.map((category) => (
               <li key={category.slug}>
-                <Link href={category.permalink[params.lang]}>
-                  {category.name[params.lang]}{" "}
-                  <span className="opacity-50">
-                    ({category.count[params.lang]})
-                  </span>
+                <Link href={category.permalink[lang]}>
+                  {category.name[lang]}{" "}
+                  <span className="opacity-50">({category.count[lang]})</span>
                 </Link>
               </li>
             ))}

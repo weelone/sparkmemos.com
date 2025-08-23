@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { RadioGroup } from "@headlessui/react";
+import { Radio, RadioGroup } from "@headlessui/react";
 import clsx from "clsx";
 
 import { Button } from "@/components/Button";
@@ -179,11 +179,11 @@ export function Pricing({ dict }: { dict: Dictionary }) {
               className="grid grid-cols-2"
             >
               {["Monthly", "Annually"].map((period) => (
-                <RadioGroup.Option
+                <Radio
                   key={period}
                   value={period}
                   className={clsx(
-                    "cursor-pointer border border-stone-300 px-[calc(theme(spacing.3)-1px)] py-[calc(theme(spacing.2)-1px)] text-sm text-stone-700 outline-2 outline-offset-2 transition-colors hover:border-stone-400",
+                    "cursor-pointer border border-stone-300 px-[calc(theme(spacing.3)-1px)] py-[calc(theme(spacing.2)-1px)] text-sm text-stone-700 transition-colors hover:border-stone-400",
                     period === "Monthly"
                       ? "rounded-l-lg"
                       : "-ml-px rounded-r-lg"
@@ -192,7 +192,7 @@ export function Pricing({ dict }: { dict: Dictionary }) {
                   {period === "Monthly"
                     ? dict.homeSections.pricing.monthlyLabel
                     : dict.homeSections.pricing.annuallyLabel}
-                </RadioGroup.Option>
+                </Radio>
               ))}
             </RadioGroup>
             <div
@@ -201,15 +201,14 @@ export function Pricing({ dict }: { dict: Dictionary }) {
                 "pointer-events-none absolute inset-0 z-10 grid grid-cols-2 overflow-hidden rounded-lg bg-orange-500 transition-all duration-300",
                 activePeriod === "Monthly"
                   ? "[clip-path:inset(0_50%_0_0)]"
-                  : "[clip-path:inset(0_0_0_calc(50%-1px))]"
+                  : "[clip-path:inset(0_0_0_50%)]"
               )}
             >
               {["Monthly", "Annually"].map((period) => (
                 <div
                   key={period}
                   className={clsx(
-                    "py-2 text-center text-sm font-semibold text-white",
-                    period === "Annually" && "-ml-px"
+                    "py-2 text-center text-sm font-semibold text-white"
                   )}
                 >
                   {period === "Monthly"
