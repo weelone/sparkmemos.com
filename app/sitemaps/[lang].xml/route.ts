@@ -10,9 +10,9 @@ function xhtmlLink(rel: "alternate", href: string, hrefLang: string) {
 
 export async function GET(
   _req: NextRequest,
-  { params }: { params: { lang: Language } }
+  { params }: { params: Promise<{ lang: Language }> }
 ) {
-  const lang = params.lang;
+  const { lang } = await params;
   const dicts = await Promise.all(dictionaryKeys.map(getDictionary));
   const current = dicts.find((d) => d.urls.home.startsWith(`/${lang}`));
   if (!current) return new Response("Not found", { status: 404 });
