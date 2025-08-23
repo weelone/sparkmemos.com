@@ -6,6 +6,24 @@ import { PrimaryFeatures } from "@/components/PrimaryFeatures";
 import { Reviews } from "@/components/Reviews";
 import { SecondaryFeatures } from "@/components/SecondaryFeatures";
 import { getDictionary, Language } from "@/dictionaries";
+import type { Metadata } from "next";
+import { getAlternateLanguages } from "@/lib/metadata";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: Language }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+
+  return {
+    alternates: {
+      canonical: new URL(dict.urls.home, dict.baseUrl).href,
+      languages: await getAlternateLanguages((d) => d.urls.home),
+    },
+  };
+}
 
 export default async function Home({
   params,

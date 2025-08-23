@@ -4,8 +4,9 @@ import { Container } from "@/components/Container";
 import { Logomark } from "@/components/Logo";
 import { NavLinks } from "@/components/NavLinks";
 import { METADATA } from "@/constants/metadata";
-import { Dictionary } from "@/dictionaries";
+import { Dictionary, Language } from "@/dictionaries";
 import { AppStoreQRCode } from "./QRCode";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 function QrCodeBorder(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -54,10 +55,14 @@ export function Footer({ dict }: { dict: Dictionary }) {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center border-t border-stone-200 pb-12 pt-8 md:flex-row-reverse md:justify-between md:pt-6">
-          <p className="mt-6 text-sm text-stone-500 md:mt-0">
-            spark@weelone.com
-          </p>
+        <div className="flex flex-col items-center border-t border-stone-200 pb-12 pt-8 md:flex-row md:justify-between md:pt-6">
+          {/* Language switcher */}
+          <div className="flex flex-wrap mt-4 md:mt-0">
+            {/* dict 自带当前语言上下文，读取 urls.home 的前缀推断 */}
+            <LanguageSwitcher
+              currentLang={dict.urls.home.split("/")[1] as Language}
+            />
+          </div>
           <p className="mt-6 text-sm text-stone-500 md:mt-0">
             &copy; Copyright {new Date().getFullYear()}. All rights reserved.
           </p>

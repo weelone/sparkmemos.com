@@ -36,6 +36,7 @@ export async function generateMetadata({
       card: "summary_large_image",
     },
     alternates: {
+      canonical: new URL(dictionary.urls.blog, dictionary.baseUrl).href,
       languages: await getAlternateLanguages((dict) => dict.urls.blog),
     },
   };

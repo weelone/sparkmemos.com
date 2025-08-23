@@ -5,6 +5,7 @@ import { getDictionary, Language, languageLabels } from "@/dictionaries";
 import { Metadata } from "next";
 import clsx from "clsx";
 import { CalendarDays, Languages } from "lucide-react";
+import Script from "next/script";
 
 export const runtime = "edge";
 
@@ -29,25 +30,26 @@ export async function generateMetadata({
   return {
     metadataBase: new URL(dictionary.baseUrl),
     title: post.title,
-    description: post.title,
+    description: post.description || post.title,
     keywords: dictionary.defaultKeywords,
     openGraph: {
-      type: "website",
+      type: "article",
       url: new URL(post.permalink, dictionary.baseUrl).href,
       title: post.title,
-      description: post.title,
+      description: post.description || post.title,
       siteName: dictionary.websiteName,
       locale: lang,
       images: post.cover?.src ?? "/social-banner.png",
     },
     twitter: {
       title: post.title,
-      description: post.title,
+      description: post.description || post.title,
       site: "@noobnooc",
       card: "summary_large_image",
-      images: "/static/banner.png",
+      images: "/social-banner.png",
     },
     alternates: {
+      canonical: new URL(post.permalink, dictionary.baseUrl).href,
       languages: Object.fromEntries(
         allLanguages.map((post) => [
           post.lang,
@@ -80,6 +82,26 @@ export default async function PostPage({
 
   return (
     <main className="flex mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-8 mb-16">
+      <Script id="ld-json" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.description || post.title,
+          datePublished: post.date,
+          dateModified: post.updated || post.date,
+          inLanguage: lang,
+          image: post.cover?.src
+            ? new URL(post.cover.src, dictionary.baseUrl).href
+            : new URL("/social-banner.png", dictionary.baseUrl).href,
+          mainEntityOfPage: new URL(post.permalink, dictionary.baseUrl).href,
+          publisher: {
+            "@type": "Organization",
+            name: dictionary.websiteName,
+            url: dictionary.baseUrl,
+          },
+        })}
+      </Script>
       <div className="flex flex-col gap-4">
         <article className="flex flex-col gap-2 max-w-prose grow-0 min-w-0">
           <h1 className="text-3xl font-serif">{post.title}</h1>

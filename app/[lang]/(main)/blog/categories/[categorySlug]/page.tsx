@@ -44,6 +44,7 @@ export async function generateMetadata({
       card: "summary_large_image",
     },
     alternates: {
+      canonical: new URL(category.permalink[lang], dictionary.baseUrl).href,
       languages: await getAlternateLanguages(
         (dict, _lang) => category.permalink[_lang]
       ),
