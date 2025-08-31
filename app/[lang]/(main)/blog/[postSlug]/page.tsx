@@ -7,8 +7,6 @@ import clsx from "clsx";
 import { CalendarDays, Languages } from "lucide-react";
 import Script from "next/script";
 
-export const runtime = "edge";
-
 export async function generateMetadata({
   params,
 }: {

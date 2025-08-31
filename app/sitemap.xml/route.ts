@@ -1,7 +1,5 @@
 import { dictionaryKeys, getDictionary } from "@/dictionaries";
 
-export const runtime = "edge";
-
 export async function GET() {
   const dicts = await Promise.all(dictionaryKeys.map(getDictionary));
 

@@ -2,8 +2,6 @@ import { NextRequest } from "next/server";
 import { posts, categories } from "@/.velite";
 import { Language, dictionaryKeys, getDictionary } from "@/dictionaries";
 
-export const runtime = "edge";
-
 function xhtmlLink(rel: "alternate", href: string, hrefLang: string) {
   return `\n    <xhtml:link rel="${rel}" hreflang="${hrefLang}" href="${href}" />`;
 }

@@ -6,8 +6,6 @@ import { notFound } from "next/navigation";
 import { CalendarDays } from "lucide-react";
 import { getAlternateLanguages } from "@/lib/metadata";
 
-export const runtime = "edge";
-
 export async function generateMetadata({
   params,
 }: {

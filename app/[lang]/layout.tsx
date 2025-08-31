@@ -7,8 +7,6 @@ import { METADATA } from "@/constants/metadata";
 import { getDictionary, Language } from "@/dictionaries";
 import { Metadata } from "next";
 
-export const runtime = "edge";
-
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
